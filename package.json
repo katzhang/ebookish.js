@@ -1,0 +1,20 @@
+{
+  "name": "ebookish",
+  "version": "0.0.1",
+  "description": "command line tool to manage local ebooks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "ebook",
+    "ebooks",
+    "pdf"
+  ],
+  "author": "kat zhang",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.1.0",
+    "chai": "^1.10.0"
+  }
+}
