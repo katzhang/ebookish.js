@@ -4,7 +4,7 @@
   "description": "command line tool to manage local ebooks.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha"
   },
   "keywords": [
     "ebook",
