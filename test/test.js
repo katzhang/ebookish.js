@@ -1,5 +1,7 @@
-var ebookish = require('./index');
+var ebookish = require('../index');
+var argvParser require('../lib/argvParser');
+var expect = require('chai').expect;
 
-console.log(__dirname);
-
-ebookish.ls();
+describe('argvParser', function() {
+	
+});
