@@ -10,7 +10,7 @@ describe('argvParser', function() {
 		assert.deepEqual(parsedObj, {
 			command: 'ls',
 			option: undefined,
-			argument: undefined
+			directory: undefined
 		})
 
 	});
@@ -22,7 +22,22 @@ describe('argvParser', function() {
 		assert.deepEqual(parsedObj, {
 			command: 'ls',
 			option: 'all',
-			argument: 'book-1.pdf'
+			directory: 'book-1.pdf'
+		})
+	});
+});
+
+describe('ebookish', function() {
+
+	describe('#ls', function() {
+
+		it('list pdf files in the specified folder', function() {
+			var dir = 'sample_dir';
+			var output = ebookish.ls(undefined, dir);
+			//Injecting dones force adding callback argument into testing function
+			setTimeout(function() {
+				assert.equal(output, ['book-1.pdf', 'book-2.pdf']);
+			}, 100);
 		})
 	});
 });
