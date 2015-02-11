@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+var walk = require('walk');
 var argvParser = require('./lib/argvParser');
 var ebookish = module.exports;
 
@@ -7,23 +8,22 @@ var ebookish = module.exports;
 //list [all] df files
 var ls = ebookish.ls = function(option, dir) {
 	var output = [];
-	fs.readdir(dir || '.', function(err, files) {
-		if (err) {
-			throw 'error!';
-		} else {
-			files.forEach(function(file, index, array) {
-				if (path.extname(file) === '.pdf') {
-					output.push(file);
-				}
-			});
-		}
-
-		return output;
-	});
+	var remaining = [];
+	var options = {
+		followLinks: false,
+		filters: ['.git']
+	}
+	var walker = walk.walk(dir || '.', options);
+	walker.on('file', fileHandler);
 
 };
 
-
+var fileHandler = function(root, fileStat, next) {
+	if (path.extname(fileStat.name) === '.pdf') {
+		console.log(fileStat.name);
+	}
+	next();
+};
 
 var runCli = ebookish.runCli = function(args) {
 	var fn = ebookish[args.command];
